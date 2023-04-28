@@ -1,0 +1,6 @@
+#!/bin/sh
+
+javadoc -d ../apidoc -private org.kaariboga.core org.kaariboga.io org.kaariboga.util org.kaariboga.server org.kaariboga.agents org.kaariboga.domainserver org.kaariboga.plugin org.kaariboga.plugins.domainPlugIn org.kaariboga.plugins.helloPlugIn
+
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+javac org/kaariboga/util/*.java
+javac org/kaariboga/core/*.java
+javac org/kaariboga/io/*.java
+javac org/kaariboga/domainserver/*.java
+javac org/kaariboga/plugin/*.java
+javac org/kaariboga/plugins/domainPlugIn/*.java
+javac org/kaariboga/plugins/helloPlugIn/*.java
+javac org/kaariboga/server/*.java
+javac org/kaariboga/agents/*.java

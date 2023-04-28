@@ -1,0 +1,202 @@
+2006-09-26
+-  KaaribogaClassLoader and some agents:
+   - minor code changes, because Kaariboga was no longer
+     compatible to the current Java version 1.5.
+- added the scripts "compile" and "startdomainserver"
+- Boga:
+  - uses Log to write status messages
+  - additional parameters for logging in boga.config
+- DomainServer: writes additional debug information
+- DomainPlugIn: uses Log to write status messages
+- changed "domainPlugIn.config" so that it works on Ubuntu
+  dapper drake by default. (domainServer=127.0.1.1)
+- Log: added method getLoglevel
+
+2003-02-09
+- KaaribogaClassLoader:
+  - serveral bug fixes
+  - class loader now uses DeliveryService for communication
+- Test of new IO architecture
+
+2002-11-03
+- KaaribogaBase: new method loadKaariboga
+- Boga: loading of agents now works by calling 
+        KaaribogaBase.loadKaariboga
+
+2002-10-16
+- KaaribogaInputStream
+  Replaced parameter KaaribogaAddress with KaaribogaBase
+- KaaribogaClassLoader
+
+2002-09-27
+- removed inner classes SendMessageThread and
+  ReceiveMessageThread from KaaribogaBase.
+  Message are delivered now using DeliveryService
+
+2002-09-02
+- Added field id to KaaribogaMessage
+- Changed KbMessageHandler to handle delivery errors
+  including a message id.
+
+
+2002-09-01
+- package org.kaariboga.boserver deleted and replaced with
+  org.kaariboga.domainserver.
+
+
+
+2002-08-28
+  Developer version
+- new package org.kaariboga.io.
+  This is a first step towards a restructuring of 
+  input/output operations. The package inludes a new class
+  called DeliverySerice, which should be used for network
+  traffic in the future. This makes it easy to add new
+  kinds of protocols.  
+- new package org.kaariboga.domainserver
+  The new domain server replaces the old boserver.
+  Start with java org.kaariboga.domainserver.Main
+- new package org.kaariboga.util including a
+  static Log class and a simple timer.
+  The Log class makes it possible to write logging messages
+  to a file and use different logging levels.
+
+
+2002-06-16
+- Bug fixe in Boga server:
+  Plug-Ins were loaded to early and did not get the 
+  right port number.
+- some bug fixes in plug-in stuff
+- Agents, that used a domain, now use the domain plug-in.
+- Minor changes to the domain server. Several KaaribogaBases
+  on one host are allowed now.
+  This makes it possible to run a full testing environment
+  with several bases on a single computer.
+
+
+2001-08-26
+- Moved agents directory back to org/kaariboga/agents
+  instead of building a new subtree. This makes
+  developement a bit easier. However it is not a
+  good idea in the sense of security.
+- bug fixes and enhancements to the plug-in concept
+- new plug-in domainPlugIn, but not working yet
+
+
+2001-07-30
+- new Interface: KbMessageHandler
+- minor changes to the plug-in stuff
+- Additions to KaaribogaBase to handle plug-ins
+- changes on Boga to handle plug-ins
+- new example agent: HelloPlugInAgent
+
+
+2001-07-23
+- renamed PlugIn* to KbPlugIn*.
+- continues coding of KbPlugInManager and KbPlugIn.
+- coded simple plug-in example HelloPlugIn.
+
+
+2001-07-17
+- Bug Fix: Boga.java: Agents could not be loaded using FileChooser on
+           Windows systems.
+- Started some coding for plug-ins.
+
+
+2001-07-09
+- Includes Mark's latest bug fixes to handle messages for local base.
+  
+  
+2001-06-03
+- Includes Mark's latest bug fixes:
+  - clean shutdown of server socket in KaaribogaBase
+  - proper handling of connecting streams to sockets.
+- Bug fixes on network code in BoServer.
+- minor changes in many places
+
+
+2001-03-25
+- polishing of the dynamic IP code
+- minor changes in many places
+
+
+2001-03-17
+- BoServer is now able to determine the IP address of
+  an asking host.
+- BogaServer can use dynamic IP addresses now.
+  When an IP address server is specified is the boga.config 
+  file it sends a GET_MY_IP_ADDRESS message to the IP address
+  server and receives a YOUR_IP_ADDRESS message in return. 
+
+
+2001-02-06
+- minor changes on class loader, class manager, and
+  kaariboga input stream from Mark.
+
+
+2001-01-07
+- This is an enhancement to Mark's previous work concerning
+  the loading of agents from different directory structures.
+- The agents are now in a subdirectory structure inside the
+  agents directory. The subdirectory structure resembles the
+  usual Java package hierachy. Name space are now obsolete.
+  - Boga 
+  - It should be possible to load agents with a 
+    File Chooser dialog. 
+  - To load an agent it must be referenced with it's full
+    package name.
+  - ClassManager
+  - Constructor has a String array to handle multiple
+    paths for agent classes.
+
+
+2000-12-03
+- Boga
+  - Exit Menu Item added
+  - Server Menu for going on- and offline added
+  - changed menu handling for better readability
+  - menu items are now disabled if they can't be used
+- KaaribogaBase
+  - startBase and stopBase renamed as goOnline and goOffline
+  - new method getOnlineStatus
+
+
+2000-11-12
+- BoMain, 
+  BoModel: Changed exception messages to the format
+           we agreed on.
+- BoModel:
+  - More messages (see class documentation): 
+    GET_BASES 
+    GET_MY_IP_ADDRESS
+    YOUR_IP_ADDRESS 
+    The mechanism of determing an IP address this way
+    is not testet yet.
+  - addresses of all connected servers are no longer
+    broadcasted, when a BASE_ONLINE or BASE_OFFLINE
+    message arrives. This saves bandwith. Instead
+    servers may determine all connected servers by
+    sending a GET_BASES message.
+
+
+2000-10-17
+- ClassLoader
+  Mark's changes to the classmanager to allow
+  agents not in package kaariboga.agents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
